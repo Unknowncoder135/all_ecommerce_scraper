@@ -25,19 +25,27 @@ for item in range(1,7):
     for z in range(0,len(name)):
         title = name[z].text
         try:
-            
             price = prices[z].text
-            imgs = img[z]['src']
-            sold_prod = sold[z].text
-            location = where_is_from[z].text
-            prod_seller = seller[z].text
         except:
             price = 'None'
-            imgs = 'None'
+            
+        try:
+            imgs = img[z]['src']
+        except:
+             imgs = 'None'
+        try:
+            sold_prod = sold[z].text
+         except:
+        
             sold_prod = 'npne'
+        try:
+            location = where_is_from[z].text
+        except:
             location = 'none'
-            prod_seller = 'None'
-
+         try:
+            prod_seller = seller[z].text
+        except:
+             prod_seller = 'None'
 
         main_dir = {
             'prod_title':title,
