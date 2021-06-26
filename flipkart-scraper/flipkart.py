@@ -26,12 +26,19 @@ for z in range(1,10):
         prices  =price[x].text.replace('₹','')
         try:
             img = imgs[x]['src']
-            rateing  = rateings[x].text
-            discription = discrept[x].text
         except:
             img = 'not found'
+        try:
+            rateing  = rateings[x].text
+         except:
             rateing = 'not found'
+        try:
+            discription = discrept[x].text
+        except:
             discription = 'not found'
+
+        
+        
         main_dir = {
             'product_name':titles,
             'product_price': prices,
