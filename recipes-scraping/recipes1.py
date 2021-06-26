@@ -18,14 +18,11 @@ for k in range(1,10):
 
     for z in no:
         f = z.find('img')['src']
-       
         main.append(f)
 
     for item in range(0,len(name)):
         title = name[item].text.strip()
-        # ff = item.find()
         reviews = review[item].text.strip()
-        # print(title)
         mai_dir = {
             'title': title,
             'img_link':main[item],
