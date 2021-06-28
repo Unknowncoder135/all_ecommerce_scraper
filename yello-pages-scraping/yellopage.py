@@ -6,13 +6,13 @@ import time
 
 main_list = []
 
-def extract(url):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'}
+def get_data(url):
+    headers = {'User-Agent': 'put your user agent'}
     r = requests.get(url, headers=headers)
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup.find_all('div', class_ = 'row businessCapsule--mainRow')
 
-def transform(articles):
+def parse(articles):
     for item in articles:
         name = item.find('h2',{'itemprop': 'name'}).text.strip()
 
@@ -48,9 +48,9 @@ def load_data():
 
 for x in range(1,9):
     print(f'Getting data page..... {x}')
-    articles = extract(f'https://www.yell.com/ucs/UcsSearchAction.do?scrambleSeed=540269558&keywords=cafes+%26+coffee+shops&location=glasgow&pageNum={x}')
-    transform(articles)
-    time.sleep(5)
+    articles = get_data(f'https://www.yell.com/ucs/UcsSearchAction.do?scrambleSeed=540269558&keywords=cafes+%26+coffee+shops&location=glasgow&pageNum={x}')
+    parse(articles)
+    time.sleep(3)
 
 load_data()
 print('mission Complate')
